@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -31,7 +32,7 @@ public class TestListener implements ITestListener {
         System.out.println(String.format("======================================== SKIPPING TEST %s ========================================", iTestResult.getName()));
         takeScreenshot(iTestResult);
     }
-
+    @Attachment(type = "image/png", value = "скриншот")
     private byte[] takeScreenshot(ITestResult iTestResult) {
         try {
             return ((TakesScreenshot)getWebDriver()).getScreenshotAs(OutputType.BYTES);
